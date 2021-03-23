@@ -1,0 +1,9 @@
+.navbar .image-logo {
+  width: 20%;
+}
+h1 a:hover,
+.header-item:hover {
+  color: #dddddd !important;
+  text-decoration: none;
+  cursor: pointer;
+}

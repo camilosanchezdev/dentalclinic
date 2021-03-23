@@ -1,0 +1,44 @@
+.home-section {
+  border-top: 5px solid #1192b3;
+}
+.cs-pink {
+  background-color: #bc74a5;
+}
+.cs-pink-col {
+  color: #bc74a5;
+}
+.cs-blue-col {
+  color: #1192b3;
+}
+.cs-pink:hover {
+  background-color: #1192b3;
+}
+.card {
+  cursor: pointer;
+}
+.card:hover .card-body {
+  transition: ease 0.5s all;
+  background-color: #1192b3;
+}
+.overlay-home {
+  background-color: #62c3d9;
+  opacity: 0.45;
+  transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.btn-turno {
+  position: absolute;
+  top: 70%;
+  left: 10%;
+}
+.home-box {
+  border-bottom: 5px solid #bc74a5;
+}
+.cards-contact {
+  width: 80%;
+  margin: 40px auto !important;
+}
