@@ -1,0 +1,62 @@
+<section class="about mt-5 w-100 pb-5">
+    <div class="row ml-3 mr-3">
+        <div class="slider col-6">
+            <p-carousel [value]="imagenes" [numVisible]="1" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
+                <ng-template let-imagen pTemplate="item">
+                    <img height="400px" src="{{imagen}}" />
+                </ng-template>
+            </p-carousel>
+        </div>
+        <div class="text col-6">
+            <h2 class="cs-pink-col mb-3">DentalClinic en <br /><span
+                    class="cs-blue-col h1 font-weight-bold">Buenos Aires</span></h2>
+            <p class="h6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis harum, porro corrupti cum facere incidunt optio error accusantium consectetur nam obcaecati possimus ducimus recusandae in dignissimos. Assumenda earum expedita vel!</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, facilis voluptatum vero, quasi excepturi nihil unde repudiandae distinctio aspernatur nemo ea ratione illo? Qui, vel earum? Voluptates, dicta. Iure, accusamus?</p>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, facilis voluptatum vero, quasi excepturi
+                nihil unde repudiandae distinctio aspernatur nemo ea ratione illo? Qui, vel earum? Voluptates, dicta. Iure,
+                accusamus?</p>
+        </div>
+    </div>
+    <div class="especialidades mt-5 ml-5 mr-5 mb-5">
+        <h2 class="cs-pink-col mb-3">Especialidades<br /><span class="cs-blue-col h1 font-weight-bold">odontológicas</span></h2>
+        <div class="row">
+            <div class="list col-md-6">
+                <p class="font-weight-bold h6 mb-3 mt-3">Excelencia en la atención en diferentes áreas ondontológicas</p>
+                <ul>
+                    <li>Cirugía</li>
+                    <li>Implantes dentales</li>
+                    <li>Ortodoncia</li>
+                    <li>Prevención</li>
+                    <li>Estética dental</li>
+                    <li>Radiología</li>
+                    <li>Peridoncia</li>
+                    <li>Odontología general</li>
+                    <li>Prótesis</li>
+                    <li>Periodoncia</li>
+                    <li>Cariología</li>
+                </ul>
+            </div>
+            <div class="cards col-md-6 d-flex justify-content-center align-items-center">
+                <div class="tarjetas-especialidades d-flex flex-wrap w-100">
+                    <div class="tarjeta d-flex justify-content-center flex-column align-items-center w-50 mb-3">
+                        <img class="w-25" src="../../../assets/especialidad-1.png" alt="">
+                        <p class="h4 text-info text-center">Implantes dentales</p>
+                    </div>
+                    <div class="tarjeta d-flex justify-content-center flex-column align-items-center w-50 mb-3">
+                        <img class="w-25" src="../../../assets/especialidad-2.png" alt="">
+                        <p class="h4 text-info text-center">Ortodonacia</p>
+                    </div>
+                    <div class="tarjeta d-flex justify-content-center flex-column align-items-center w-50">
+                        <img class="w-25" src="../../../assets/especialidad-3.png" alt="">
+                        <p class="h4 text-info text-center">Radiología</p>
+                    </div>
+                    <div class="tarjeta d-flex justify-content-center flex-column align-items-center w-50">
+                        <img class="w-25" src="../../../assets/especialidad-4.png" alt="">
+                        <p class="h4 text-info text-center">Blanqueamiento dental</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

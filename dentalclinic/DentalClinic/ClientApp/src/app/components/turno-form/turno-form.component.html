@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="form">
+        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="dni">DNI</label>
+                <input type="text" class="form-control" id="dni" name="dni" formControlName="dni" placeholder="12345678" >
+            </div>
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" class="form-control" id="name" name="name" formControlName="name" placeholder="Ingresá tu nombre">
+            </div>
+            <div class="form-group">
+                <label for="lastname">Apellido</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" formControlName="lastname" placeholder="Ingresá tu apellido">
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" class="form-control" id="email" name="email" formControlName="email" aria-describedby="emailHelp" placeholder="ejemplo@gmail.com" email>
+            </div>
+            <div class="form-group">
+                <label for="phone">Celular</label>
+                <input type="text" class="form-control" id="phone" name="phone" formControlName="phone" placeholder="Ejemplo: 115444333">
+            </div>
+            <div class="form-group">
+                <label for="address">Dirección</label>
+                <input type="text" class="form-control" id="address" name="address" formControlName="address" placeholder="Ingresá tu dirección">
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!checkoutForm.valid">Confirmar</button>
+        </form> 
+    </div>
+</div>

@@ -1,0 +1,9 @@
+.border-3 {
+  border-width: 3px !important;
+}
+.border-shadow {
+  border-color: #ccc !important;
+}
+.list-horarios li {
+  list-style: none;
+}

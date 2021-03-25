@@ -1,0 +1,66 @@
+<div class="mr-5 ml-5 mt-5 pb-5 d-flex flex-column justify-content-center align-items-center">
+        <h3 class="mb-5">{{especialista}}</h3>
+        <div class="turnero w-75 d-flex justify-content-center align-items-center">
+            <div class="calendario w-100">
+                <div class="row text-center">
+                    <div class="col-md-6">
+                        <div class="btn-group">
+                            <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+                                (viewDateChange)="closeOpenMonthViewDay()">
+                                Anterior
+                            </div>
+                            <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
+                                Actual
+                            </div>
+                            <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+                                (viewDateChange)="closeOpenMonthViewDay()">
+                                Siguiente
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'es' }}</h3>
+                    </div>
+                </div>
+                <br />
+                <div [ngSwitch]="view">
+                    <mwl-calendar-month-view [locale]="locale" *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+                        [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"
+                        (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+                    </mwl-calendar-month-view>
+                    <mwl-calendar-week-view  [locale]="locale" *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+                        [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)"
+                        (eventTimesChanged)="eventTimesChanged($event)">
+                    </mwl-calendar-week-view>
+                    <mwl-calendar-day-view  [locale]="locale" *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events" [refresh]="refresh"
+                        (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+                    </mwl-calendar-day-view>
+                </div>
+                
+            <ng-template #modalContent let-close="close">
+                <div class="modal-header">
+                    <h5 class="modal-title">Completa el formulario para reservar tu turno: {{ currentDate }}</h5>
+                    <button type="button" class="close" (click)="close()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="dni">DNI</label>
+                            <input type="number" class="form-control" name="dni" formControlName="dni" id="dni" placeholder="Ingresá tu DNI" min="0">
+                        </div>
+                        <button type="submit" class="btn btn-primary" [disabled]="!checkoutForm.valid">Continuar</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" (click)="close()">
+                        Cancelar
+                    </button>
+                </div>
+            </ng-template>
+                
+              
+            </div>
+        </div>
+    </div>

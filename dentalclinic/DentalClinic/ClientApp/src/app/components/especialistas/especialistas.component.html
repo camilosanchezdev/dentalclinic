@@ -1,0 +1,26 @@
+<div class="container d-flex justify-content-center pb-5 flex-column align-items-center">
+    
+    <div class="especialistas bg-light border-shadow pt-3 pb-5 border w-75">
+        <h3 class="text-center mb-4 text-secondary">Elige un especialista</h3>
+        <div *ngFor="let esp of especialistas" class="card-especialista row mt-3 border-top border-shadow mr-0 ml-0 pt-5 pb-5">
+            <div class="col-md-3 d-flex justify-content-center align-items-center">
+                <img height="150px" *ngIf="esp.gender === 'f'" src="../../../assets/dentist-woman.png" alt="">
+                <img height="150px" *ngIf="esp.gender === 'm'" src="../../../assets/dentist-man.png" alt="">
+            </div>
+            <div class="col-md-4 d-flex justify-content-center align-items-center flex-column">
+                <p class="font-weight-bold text-secondary h5 mb-3">{{esp.name}}</p>
+                <p>Odontología</p>
+                <p class="text-uppercase">{{esp.speciality}}</p>
+            </div>
+            <div class="col-md-5  d-flex justify-content-between align-items-center flex-column">
+                <ul class="list-horarios w-100 ml-0 pl-0">
+                    <li *ngFor="let dia of esp.days" class="d-flex justify-content-between"><span class="col-md-6" [innerHTML]="dayOfWeek(dia)"></span><span class="col-md-6">{{esp.since.substring(16, 11)}}
+                            a {{esp.until.substring(16, 11)}} hs</span></li>
+                </ul>
+                <button class="btn btn-success text-uppercase" (click)="solicitarTurno(esp.id_especialista)">Solicitar turno</button>
+            </div>
+        </div>
+
+      
+    </div>
+</div>
