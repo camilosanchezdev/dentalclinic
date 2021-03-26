@@ -17,7 +17,7 @@
                     <li *ngFor="let dia of esp.days" class="d-flex justify-content-between"><span class="col-md-6" [innerHTML]="dayOfWeek(dia)"></span><span class="col-md-6">{{esp.since.substring(16, 11)}}
                             a {{esp.until.substring(16, 11)}} hs</span></li>
                 </ul>
-                <button class="btn btn-success text-uppercase" (click)="solicitarTurno(esp.id_especialista)">Solicitar turno</button>
+                <button class="btn btn-success text-uppercase" (click)="solicitarTurno(esp.id_especialista, esp.name)">Solicitar turno</button>
             </div>
         </div>
 

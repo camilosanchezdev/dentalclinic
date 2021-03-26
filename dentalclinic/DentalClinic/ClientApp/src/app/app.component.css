@@ -7,3 +7,31 @@ h1 a:hover,
   text-decoration: none;
   cursor: pointer;
 }
+@media (max-width: 993px) {
+  .navbar {
+    padding: 0;
+  }
+  .navbar-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .navbar-cards {
+    margin-left: 0px !important;
+    justify-content: center !important;
+    margin-bottom: 20px;
+  }
+  .navbar-cards .phone,
+  .navbar-cards .days {
+    margin: 0 !important;
+  }
+  #navbarSupportedContent {
+    margin-left: 20px;
+    margin-top: 10px;
+  }
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}

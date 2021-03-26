@@ -29,6 +29,8 @@ import {
 import { formatDate, registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { TurnosService } from '../../services/turnos.service';
+import { ClientsService } from '../../services/clients.service';
+import { EspecialistasService } from '../../services/especialistas.service';
 import { Router } from '@angular/router';
 const colors: any = {
   red: {
@@ -62,18 +64,22 @@ export class CalendarComponent implements OnInit {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private modal: NgbModal,
-    private turno: TurnosService,
+    private turnoService: TurnosService,
+    private clientsService: ClientsService,
+    private especialistasService: EspecialistasService,
     private router: Router,
     private toastr: ToastrService
   ) {
-    if (turno.especialista === 0) {
-      this.router.navigate(['turno']);
-    }
-    turno.getEspecialista(this.turno.especialista).subscribe(
-      (data) => this.handleEspecialista(data),
-      (error) => console.log(error)
-    );
-    turno.getTurnos(this.turno.especialista).subscribe(
+    // if (especialistasService.especialista === 0) {
+    //   this.router.navigate(['turnos']);
+    // }
+    especialistasService
+      .getEspecialista(this.especialistasService.especialista)
+      .subscribe(
+        (data) => this.handleEspecialista(data),
+        (error) => console.log(error)
+      );
+    turnoService.getTurnos(this.especialistasService.especialista).subscribe(
       (data) => this.handleTurno(data),
       (error) => console.log(error)
     );
@@ -122,6 +128,7 @@ export class CalendarComponent implements OnInit {
   handleTurno(data): void {
     data.forEach((element) => {
       this.events.push({
+        id: element.id_turno,
         start: new Date(element.horario),
         title: element.horario.substring(11, 16) + ' - Solicitar turno',
         color: colors.green,
@@ -166,6 +173,12 @@ export class CalendarComponent implements OnInit {
     this.modalData = { event, action };
     this.modal.open(this.modalContent, { size: 'lg' });
     this.currentDate = formatDate(event.start, 'dd/MM/yyyy HH:mm', 'es');
+    this.turnoService.turnoSelected = formatDate(
+      event.start,
+      'dd/MM/yyyy HH:mm',
+      'es'
+    );
+    this.turnoService.id_turno = new Number(event.id);
   }
 
   addEvent(): void {
@@ -196,23 +209,41 @@ export class CalendarComponent implements OnInit {
     if (this.checkoutForm.value.dni < 0) {
       this.toastr.error('', 'Debe ingresar un DNI válido');
     } else {
-      this.turno.getClient(this.checkoutForm.value.dni).subscribe(
-        (data) => this.handleClient(data),
-        (error) => this.handleError(error)
+      this.clientsService.getClient(this.checkoutForm.value.dni).subscribe(
+        (data) => this.handleClient(data)
+        //(error) => console.log(error) //this.handleError(error)
       );
     }
   }
-  handleError(error): void {
-    this.modal.dismissAll(this.modalContent);
-    this.router.navigate(['turno/formulario']);
-  }
+  // handleError(error): void {
+  //   this.modal.dismissAll(this.modalContent);
+  //   this.router.navigate(['turno/formulario']);
+  // }
   handleClient(data): void {
-    if (data === 'NO') {
-      console.log('NO TOCO');
+    if (data.status === 'error') {
+      this.clientsService.clientExist = false;
     } else {
-      console.log('Hay un usuario');
-      this.toastr.success('', 'Si');
+      this.clientsService.clientExist = true;
+      this.clientsService.id_client = data.id_client;
+      this.clientsService.modelClient = {
+        dni: data.dni,
+        name: data.name,
+        lastname: data.lastname,
+        email: data.email,
+        phone: data.phone,
+        address: data.address,
+      };
     }
+    this.clientsService.dniSelected = this.checkoutForm.value.dni;
+    this.turnoService.setValue(true);
+    this.modal.dismissAll(this.modalContent);
+    this.router.navigate(['turnos/formulario']);
+    // if (data === 'NO') {
+    //   console.log('NO TOCO');
+    // } else {
+    //   console.log('Hay un usuario');
+    //   this.toastr.success('', 'Si');
+    // }
   }
   ngOnInit(): void {
     this.checkoutForm = this.formBuilder.group({

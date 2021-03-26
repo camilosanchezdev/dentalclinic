@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TurnosService } from '../../services/turnos.service';
+import { EspecialistasService } from '../../services/especialistas.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-especialistas',
@@ -8,8 +9,12 @@ import { Router } from '@angular/router';
 })
 export class EspecialistasComponent implements OnInit {
   especialistas = [];
-  constructor(private turnos: TurnosService, private router: Router) {
-    turnos.getAllEspecialistas().subscribe(
+  constructor(
+    private turnos: TurnosService,
+    private especialistasService: EspecialistasService,
+    private router: Router
+  ) {
+    especialistasService.getAllEspecialistas().subscribe(
       (data) => this.handleEspecialistas(data),
       (error) => console.log(error)
     );
@@ -33,10 +38,11 @@ export class EspecialistasComponent implements OnInit {
         break;
     }
   }
-  solicitarTurno(id_especialista): void {
-    this.turnos.especialista = id_especialista;
-    this.router.navigate(['turno/calendario']);
-    console.log(id_especialista);
+  solicitarTurno(id_especialista, name): void {
+    this.especialistasService.especialista = id_especialista;
+    this.especialistasService.especialista_name = name;
+    this.especialistasService.setValue(true);
+    this.router.navigate(['turnos/calendario']);
   }
   ngOnInit(): void {}
 }

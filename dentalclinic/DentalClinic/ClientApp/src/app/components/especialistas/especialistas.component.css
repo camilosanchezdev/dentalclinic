@@ -7,3 +7,8 @@
 .list-horarios li {
   list-style: none;
 }
+@media (max-width: 1200px) {
+  .especialistas {
+    width: 100% !important;
+  }
+}

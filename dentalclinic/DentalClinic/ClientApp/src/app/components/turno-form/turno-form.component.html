@@ -1,31 +1,49 @@
 <div class="container">
-    <div class="form">
-        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
-            <div class="form-group">
-                <label for="dni">DNI</label>
-                <input type="text" class="form-control" id="dni" name="dni" formControlName="dni" placeholder="12345678" >
+    <div class="row">
+        <div class="form col-md-6 mb-5">
+            <h3 class="text-info mb-5">Confirma tu información personal</h3>
+            <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="dni">DNI</label>
+                    <input type="number" class="form-control" id="dni" name="dni" formControlName="dni"
+                        placeholder="Ingrese DNI">
+                </div>
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" id="name" name="name" formControlName="name"
+                        placeholder="Ingresá tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Apellido</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" formControlName="lastname"
+                        placeholder="Ingresá tu apellido">
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" class="form-control" id="email" name="email" formControlName="email"
+                        aria-describedby="emailHelp" placeholder="ejemplo@gmail.com" email>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Celular</label>
+                    <input type="text" class="form-control" id="phone" name="phone" formControlName="phone"
+                        placeholder="Ejemplo: 115444333">
+                </div>
+                <div class="form-group">
+                    <label for="address">Dirección</label>
+                    <input type="text" class="form-control" id="address" name="address" formControlName="address"
+                        placeholder="Ingresá tu dirección">
+                </div>
+                <button type="submit" class="btn btn-primary w-100" [disabled]="!checkoutForm.valid">Confirmar turno</button>
+            </form>
+        </div>
+        <div class="card-turno col-md-6 mb-5">
+            <h3 class="text-info mb-5">Turno solicitado</h3>
+            <div class="card px-3 py-3">
+                <h4>{{ especialista_name }}</h4>
+                <p>Turno asignado para el día {{ turno_selected }} hs</p>
             </div>
-            <div class="form-group">
-                <label for="name">Nombre</label>
-                <input type="text" class="form-control" id="name" name="name" formControlName="name" placeholder="Ingresá tu nombre">
-            </div>
-            <div class="form-group">
-                <label for="lastname">Apellido</label>
-                <input type="text" class="form-control" id="lastname" name="lastname" formControlName="lastname" placeholder="Ingresá tu apellido">
-            </div>
-            <div class="form-group">
-                <label for="email">Correo electrónico</label>
-                <input type="email" class="form-control" id="email" name="email" formControlName="email" aria-describedby="emailHelp" placeholder="ejemplo@gmail.com" email>
-            </div>
-            <div class="form-group">
-                <label for="phone">Celular</label>
-                <input type="text" class="form-control" id="phone" name="phone" formControlName="phone" placeholder="Ejemplo: 115444333">
-            </div>
-            <div class="form-group">
-                <label for="address">Dirección</label>
-                <input type="text" class="form-control" id="address" name="address" formControlName="address" placeholder="Ingresá tu dirección">
-            </div>
-            <button type="submit" class="btn btn-primary" [disabled]="!checkoutForm.valid">Confirmar</button>
-        </form> 
+            
+        </div>
     </div>
+    
 </div>

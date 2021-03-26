@@ -10,3 +10,10 @@
 .tratamientos-cards .card {
   width: 25%;
 }
+@media (max-width: 1000px) {
+  .tratamientos-cards .row .card {
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}

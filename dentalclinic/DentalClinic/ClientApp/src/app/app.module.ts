@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'nosotros', component: AboutComponent },
   { path: 'tratamientos', component: TratamientosComponent },
   {
-    path: 'turno',
+    path: 'turnos',
     component: TurnoComponent,
     children: [
       {

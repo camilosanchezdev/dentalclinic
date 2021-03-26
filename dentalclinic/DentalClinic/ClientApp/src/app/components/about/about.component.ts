@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
+import { EspecialistasService } from '../../services/especialistas.service';
+import { TurnosService } from '../../services/turnos.service';
+import { ClientsService } from '../../services/clients.service';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -13,23 +15,31 @@ export class AboutComponent implements OnInit {
     'https://enjoydental.com.ar/wp-content/uploads/2018/03/sala-enjoy-dental.jpg',
   ];
   responsiveOptions = [
-    {
-      breakpoint: '1024px',
-      numVisible: 1,
-      numScroll: 1,
-    },
-    {
-      breakpoint: '768px',
-      numVisible: 1,
-      numScroll: 1,
-    },
-    {
-      breakpoint: '560px',
-      numVisible: 1,
-      numScroll: 1,
-    },
+    // {
+    //   breakpoint: '900px',
+    //   numVisible: 1,
+    //   numScroll: 1,
+    // },
+    // {
+    //   breakpoint: '768px',
+    //   numVisible: 1,
+    //   numScroll: 1,
+    // },
+    // {
+    //   breakpoint: '560px',
+    //   numVisible: 1,
+    //   numScroll: 1,
+    // },
   ];
-  constructor() {}
+  constructor(
+    private especialistasService: EspecialistasService,
+    private turnosService: TurnosService,
+    private clientsService: ClientsService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.especialistasService.setValue(false);
+    this.turnosService.setValue(false);
+    this.clientsService.setValue(false);
+  }
 }

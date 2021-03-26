@@ -24,7 +24,11 @@ namespace DentalClinic.Controllers
             {
                 return Ok(client);
             }
-            return Ok("NO");
+            else
+            {
+                return Ok(new { status = "error", message = "Cliente inexistente" });
+            }
+            
         }
         [HttpPost("clients/new")]
         public ActionResult newUser([FromForm] int dni, [FromForm] string name, [FromForm] string lastname, [FromForm] string email, [FromForm] string phone, [FromForm] string address)
@@ -46,7 +50,26 @@ namespace DentalClinic.Controllers
             _context.SaveChanges();
             return Ok(new { status = "ok"});
         }
+        [HttpPost("clients/update")]
+        public ActionResult updateUser([FromForm] int dni, [FromForm] string name, [FromForm] string lastname, [FromForm] string email, [FromForm] string phone, [FromForm] string address)
+        {
+            var client = _context.clients.FirstOrDefault(x => x.dni.Equals(dni));
+            if (client != null)
+            {
+                client.dni = dni;
+                client.name = name;
+                client.lastname = lastname;
+                client.email = email;
+                client.phone = phone;
+                client.address = address;
+                _context.SaveChanges();
+                return Ok(new { status = "ok" });
+            }
+            else
+            {
+                return Ok(new { status = "error", message = "DNI inexistente" });
+            }
+        }
 
-       
     }
 }

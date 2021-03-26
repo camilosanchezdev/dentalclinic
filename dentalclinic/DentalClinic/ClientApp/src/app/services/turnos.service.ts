@@ -1,32 +1,35 @@
 import { Injectable } from '@angular/core';
 import { GeneralService } from './general.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class TurnosService {
+  private _turno: BehaviorSubject<boolean>;
   _baseUrl: string = '';
-  especialista: number = 0;
-  dniSelected: number = 0;
+  id_turno: Number = 0;
+  turnoSelected: string = '';
   constructor(private general: GeneralService, private http: HttpClient) {
     this._baseUrl = general.baseUrl;
-  }
-  getAllEspecialistas() {
-    return this.http.get(this._baseUrl + 'especialistas/especialistas');
-  }
-  getEspecialista(id_especialista) {
-    return this.http.get(
-      this._baseUrl + 'especialistas/especialistas/' + id_especialista
-    );
+    this._turno = new BehaviorSubject<boolean>(false);
   }
   getTurnos(id_especialista) {
     return this.http.get(this._baseUrl + 'turnos/turnos/' + id_especialista);
   }
-  getClient(dni) {
-    return this.http.get(this._baseUrl + 'clients/clients/' + dni);
+  getTurno(id_turno) {
+    return this.http.get(this._baseUrl + 'turnos/turno/' + id_turno);
   }
-  newUser(data) {
-    const options = { headers: { 'Content-Type': 'application/json' } };
-    return this.http.post(this._baseUrl + 'clients/clients/new', data);
+  newTurno(id_turno, id_client) {
+    return this.http.post(
+      this._baseUrl + 'turnos/turno/new/' + id_turno + '/' + id_client,
+      null
+    );
+  }
+  setValue(value): void {
+    this._turno.next(value);
+  }
+  getValue(): Observable<boolean> {
+    return this._turno.asObservable();
   }
 }

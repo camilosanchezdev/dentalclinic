@@ -6,7 +6,7 @@
     </div>
     <h2 class="cs-pink-col mt-5 ml-4">Servicios de <br/><span class="cs-blue-col h1 font-weight-bold">Calidad</span></h2>
     <div class="home-cards row justify-content-between mt-3 mb-3 mr-4 ml-4">
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 20%;">
             <img class="card-img-top" src="../../../assets/home-img-1.jpg" alt="Card image cap">
             <div class="card-body text-light cs-pink">
                 <h5 class="card-title">Profesionales</h5>
@@ -14,7 +14,7 @@
                     content.</p>
             </div>
         </div>
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 20%;">
             <img class="card-img-top" src="../../../assets/home-img-2.jpg" alt="Card image cap">
             <div class="card-body text-light cs-pink">
                 <h5 class="card-title">Especialidades</h5>
@@ -22,7 +22,7 @@
                     content.</p>
             </div>
         </div>
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 20%;">
             <img class="card-img-top" src="../../../assets/home-img-3.jpg" alt="Card image cap">
             <div class="card-body text-light cs-pink">
                 <h5 class="card-title">Implantes</h5>
@@ -30,7 +30,7 @@
                     content.</p>
             </div>
         </div>
-        <div class="card" style="width: 18rem;">
+        <div class="card" style="width: 20%;">
             <img class="card-img-top" src="../../../assets/home-img-4.jpg" alt="Card image cap">
             <div class="card-body text-light cs-pink">
                 <h5 class="card-title">Blanqueamiento</h5>
@@ -43,37 +43,37 @@
     <section class="contact-home">
         <h2 id="contacto" class="cs-pink-col mt-5 ml-4 text-center">Ponte en contacto con<br /><span class="cs-blue-col h1 font-weight-bold">DentalClinic</span></h2>
         <p class="text-center">Contáctanos a través de los diferentes canales de comunicación. <br/>Responderemos tus consultas rápidamente.</p>
-        <div class="contact-section row ml-3 mr-3" style="background-color: #F2F2F2;">
+        <div class="contact-section row" style="background-color: #F2F2F2;">
             <div class="map col-md-6 d-flex justify-content-center align-items-center">
-                <div style="border: 3px solid #1192b3;">
+                <div class="w-75" style="border: 3px solid #1192b3;">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3155.9669898952357!2d-122.4399548843366!3d37.72045267976947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7e851ba8869f%3A0xd6df4f3938ee6b83!2s4867%20Mission%20St%2C%20San%20Francisco%2C%20CA%2094112%2C%20EE.%20UU.!5e0!3m2!1ses-419!2sar!4v1616472380232!5m2!1ses-419!2sar"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
                 
             </div>
             <div class="form col-md-6 mb-5 mt-5">
-                <!-- <form>
+                <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" class="pr-3 pl-3">
                     <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Tu nombre">
+                        <label for="name">Nombre</label>
+                        <input type="text" class="form-control" id="name" placeholder="Tu nombre" formControlName="name" name="name">
                     </div>
                     <div class="form-group">
-                        <label for="apellido">Apellido</label>
-                        <input type="text" class="form-control" id="apellido" placeholder="Tu apellido">
+                        <label for="lastname">Apellido</label>
+                        <input type="text" class="form-control" id="lastname" placeholder="Tu apellido" formControlName="lastname" name="lastname">
                     </div>
                     <div class="form-group">
                         <label for="email">Email address</label>
-                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" formControlName="email"
                             placeholder="Ingrese email">
                     </div>
                     <div class="form-group">
-                        <label for="telefono">Teléfono</label>
-                        <input type="number" class="form-control" id="telefono" >
+                        <label for="phone">Teléfono</label>
+                        <input type="text" class="form-control" id="phone" name="phone" formControlName="phone" >
                     </div>
                     <div class="form-group">
                         <label for="interes">Tengo interés en</label>
-                        <select class="form-control" id="interes">
+                        <select class="form-control" id="interes" name="interes" formControlName="interes">
                             <option>Selecciona...</option>
                             <option>Consulta</option>
                             <option>Blanqueamiento</option>
@@ -85,30 +85,30 @@
                     </div>
                     <div class="form-group">
                         <label for="consulta">Consulta</label>
-                        <textarea class="form-control" id="consulta" rows="3"></textarea>
+                        <textarea class="form-control" id="consulta" rows="3" name="consulta" formControlName="consulta"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">Enviar</button>
-                </form> -->
+                    <button type="submit" class="btn btn-primary w-100" disabled>Enviar</button>
+                </form>
             </div>
         </div>
         <div class="row cards-contact justify-content-between">
-            <div class="card-contact d-flex justify-content-center flex-column">
-                <i class="bi bi-telephone-outbound text-info h1 text-center"></i>
+            <div class="card-contact d-flex justify-content-center flex-column col-md-3">
+                <i class="bi bi-exclamation-octagon text-info h1 text-center"></i>
                 <h5 class="text-center">Teléfono de emergencia</h5>
                 <p class="text-center">415-205-5550 <br/>Llámanos las 24 hs.</p>
             </div>
-            <div class="card-contact d-flex justify-content-center flex-column">
+            <div class="card-contact d-flex justify-content-center flex-column col-md-3">
                 <i class="bi bi-geo-alt text-info h1 text-center"></i>
                 <h5 class="text-center">Dirección</h5>
                 <p class="text-center">La Paz 205, Buenos Aires<br />Argentina</p>
             </div>
-            <div class="card-contact d-flex justify-content-center flex-column">
+            <div class="card-contact d-flex justify-content-center flex-column col-md-3">
                 <i class="bi bi-telephone-outbound text-info h1 text-center"></i>
                 <h5 class="text-center">Teléfonos</h5>
                 <p class="text-center">415-333-5550 <br />415-123-5590</p>
             </div>
-            <div class="card-contact d-flex justify-content-center flex-column">
-                <i class="bi bi-telephone-outbound text-info h1 text-center"></i>
+            <div class="card-contact d-flex justify-content-center flex-column col-md-3">
+                <i class="bi bi-envelope text-info h1 text-center"></i>
                 <h5 class="text-center">Email de contacto</h5>
                 <p class="text-center">contact@dentalclinic.com<br />urgencias@dentalclinic.com</p>
             </div>

@@ -16,7 +16,8 @@ namespace DentalClinic.Controllers
         [HttpGet("turnos/{id}")]
         public ActionResult GetTurnosByEspecialista(int id)
         {
-            var turnos = _context.turnos.Where(x => x.especialista_id.Equals(id)).ToList();
+            // Solo los turnos disponibles (client_id != 0)
+            var turnos = _context.turnos.Where(x => x.especialista_id.Equals(id) && x.client_id.Equals(0)).ToList();
             if(turnos != null)
             {
 
@@ -24,11 +25,36 @@ namespace DentalClinic.Controllers
             }
             return Ok("No");
         }
-        [HttpPost("turnos/nuevo/{id_client}/{id_especialista}")]
-        public ActionResult NewTurno(int id_client, int id_especialista)
+        
+        [HttpGet("turno/{id}")]
+        public ActionResult GetTurno(int id)
         {
+            var turno = _context.turnos.FirstOrDefault(x => x.id_turno.Equals(id));
+            if(turno != null)
+            {
+                return Ok(turno);
+            }
+            else
+            {
+                return Ok(new { status = "error", message = "Turno inexistente" });
+            }
+            
+        }
+        [HttpPost("turno/new/{id_turno}/{id_client}")]
+        public ActionResult NewTurno(int id_turno, int id_client)
+        {
+            var turno = _context.turnos.FirstOrDefault(x => x.id_turno.Equals(id_turno));
+            if (turno != null)
+            {
+                turno.client_id = id_client;
+                _context.SaveChanges();
+                return Ok(new { status = "ok", message = "Turno agendado" });
+            }
+            else
+            {
+                return Ok(new { status = "error", message = "Turno inexistente" });
+            }
 
-            return Ok();
         }
     }
 }
