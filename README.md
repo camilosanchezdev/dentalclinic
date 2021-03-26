@@ -17,7 +17,17 @@ Se solicita al usuario el número de DNI. <br/>
 Una vez confirmada la información del usuario, se completará la asignación del turno.<br/>
 El usuario tiene la posibilidad de cambiar el horario y día del turno o cancelarlo.<br/>
 Cada turno ocupado desaparecerá del Calendario de turnos disponibles.
+<br/>
 
 ### Demo
 
 Demo | <a href="https://dentalclinicweb.azurewebsites.net/">DentalClinic on Azure</a>
+<br/>
+### Screenshots
+<img src="screenshots/screenshot-1.png" />
+<img src="screenshots/screenshot-4.png" />
+<img src="screenshots/screenshot-3.png" />
+<img src="screenshots/screenshot2.png" />
+<img src="screenshots/screenshot5.png" />
+
+
