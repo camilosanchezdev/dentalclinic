@@ -25,7 +25,7 @@ namespace DentalClinic
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "ClientApp/dist";
+                configuration.RootPath = "ClientApp/dist/clinicadental";
             });
             services.AddDbContext<MaindbContext>(options =>
             {
@@ -42,6 +42,7 @@ namespace DentalClinic
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseDeveloperExceptionPage();
             app.UseCors("ApiCorsPolicy");
             if (env.IsDevelopment())
             {

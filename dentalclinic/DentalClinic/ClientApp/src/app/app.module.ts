@@ -22,6 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 // Toastr
 import { ToastrModule } from 'ngx-toastr';
+// Spinner
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 //Routes
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -81,6 +83,7 @@ const routes: Routes = [
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
+    ProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -7,7 +7,7 @@
 .cs-blue-col {
   color: #1192b3;
 }
-@media (max-width: 1336px) {
+@media (max-width: 1100px) {
   .about-first {
     display: flex;
     flex-direction: column-reverse;

@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./turno-form.component.css'],
 })
 export class TurnoFormComponent implements OnInit {
+  progressSpinner: boolean = false;
   checkoutForm: FormGroup;
   especialista_name: string = '';
   turno_selected: string = '';
@@ -28,12 +29,12 @@ export class TurnoFormComponent implements OnInit {
     private router: Router
   ) {
     this.especialista_name = this.especialistasService.especialista_name;
-    // if (
-    //   especialistasService.especialista === 0 ||
-    //   turnoService.id_turno === 0
-    // ) {
-    //   this.router.navigate(['turnos']);
-    // }
+    if (
+      especialistasService.especialista === 0 ||
+      turnoService.id_turno === 0
+    ) {
+      this.router.navigate(['turnos']);
+    }
     this.turno_selected = this.turnoService.turnoSelected;
     this.checkoutForm = this.formBuilder.group({
       dni: new FormControl(
@@ -59,6 +60,7 @@ export class TurnoFormComponent implements OnInit {
 
   ngOnInit(): void {}
   onSubmit(): void {
+    this.progressSpinner = true;
     this.clientService.name_client =
       this.checkoutForm.value.name + ' ' + this.checkoutForm.value.lastname;
     let formData: FormData = new FormData();
@@ -86,6 +88,7 @@ export class TurnoFormComponent implements OnInit {
     }
   }
   handleData(data): void {
+    this.progressSpinner = false;
     if (data.status === 'ok') {
       // Store Turno - Update
       this.clientService.setValue(true);

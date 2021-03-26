@@ -1,13 +1,13 @@
 <section class="about mt-5 w-100 pb-5">
     <div class="about-first row ml-3 mr-3">
-        <div class="slider col-6">
+        <div class="slider col-md-6">
             <p-carousel [value]="imagenes" [numVisible]="1" [numScroll]="1" [circular]="true" [responsiveOptions]="responsiveOptions">
                 <ng-template let-imagen pTemplate="item">
                     <img width="100%" height="100%" src="{{imagen}}" />
                 </ng-template>
             </p-carousel>
         </div>
-        <div class="text col-6">
+        <div class="text col-md-6">
             <h2 class="cs-pink-col mb-3">DentalClinic en <br /><span
                     class="cs-blue-col h1 font-weight-bold">Buenos Aires</span></h2>
             <p class="h6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis harum, porro corrupti cum facere incidunt optio error accusantium consectetur nam obcaecati possimus ducimus recusandae in dignissimos. Assumenda earum expedita vel!</p>

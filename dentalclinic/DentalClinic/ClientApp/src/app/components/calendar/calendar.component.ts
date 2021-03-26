@@ -57,6 +57,7 @@ registerLocaleData(localeEs);
   styleUrls: ['./calendar.component.css'],
 })
 export class CalendarComponent implements OnInit {
+  progressSpinner: boolean = false;
   currentDate: string = '';
   locale: string = 'es';
   checkoutForm: FormGroup;
@@ -70,9 +71,10 @@ export class CalendarComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService
   ) {
-    // if (especialistasService.especialista === 0) {
-    //   this.router.navigate(['turnos']);
-    // }
+    this.progressSpinner = true;
+    if (especialistasService.especialista === 0) {
+      this.router.navigate(['turnos']);
+    }
     especialistasService
       .getEspecialista(this.especialistasService.especialista)
       .subscribe(
@@ -123,6 +125,7 @@ export class CalendarComponent implements OnInit {
   especialista: string = '';
 
   handleEspecialista(data): void {
+    this.progressSpinner = false;
     this.especialista = data.name;
   }
   handleTurno(data): void {
@@ -206,20 +209,17 @@ export class CalendarComponent implements OnInit {
     this.activeDayIsOpen = false;
   }
   onSubmit() {
+    this.progressSpinner = true;
     if (this.checkoutForm.value.dni < 0) {
       this.toastr.error('', 'Debe ingresar un DNI válido');
     } else {
-      this.clientsService.getClient(this.checkoutForm.value.dni).subscribe(
-        (data) => this.handleClient(data)
-        //(error) => console.log(error) //this.handleError(error)
-      );
+      this.clientsService
+        .getClient(this.checkoutForm.value.dni)
+        .subscribe((data) => this.handleClient(data));
     }
   }
-  // handleError(error): void {
-  //   this.modal.dismissAll(this.modalContent);
-  //   this.router.navigate(['turno/formulario']);
-  // }
   handleClient(data): void {
+    this.progressSpinner = false;
     if (data.status === 'error') {
       this.clientsService.clientExist = false;
     } else {
@@ -238,12 +238,6 @@ export class CalendarComponent implements OnInit {
     this.turnoService.setValue(true);
     this.modal.dismissAll(this.modalContent);
     this.router.navigate(['turnos/formulario']);
-    // if (data === 'NO') {
-    //   console.log('NO TOCO');
-    // } else {
-    //   console.log('Hay un usuario');
-    //   this.toastr.success('', 'Si');
-    // }
   }
   ngOnInit(): void {
     this.checkoutForm = this.formBuilder.group({

@@ -8,18 +8,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./especialistas.component.css'],
 })
 export class EspecialistasComponent implements OnInit {
+  progressSpinner: boolean = false;
   especialistas = [];
   constructor(
     private turnos: TurnosService,
     private especialistasService: EspecialistasService,
     private router: Router
   ) {
+    this.progressSpinner = true;
     especialistasService.getAllEspecialistas().subscribe(
       (data) => this.handleEspecialistas(data),
       (error) => console.log(error)
     );
   }
   handleEspecialistas(data): void {
+    this.progressSpinner = false;
     this.especialistas = data;
   }
   dayOfWeek(day) {

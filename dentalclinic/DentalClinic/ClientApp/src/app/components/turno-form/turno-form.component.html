@@ -1,4 +1,8 @@
 <div class="container">
+    <div id="spinner" *ngIf="progressSpinner">
+        <p-progressSpinner [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="8"
+            animationDuration=".5s"></p-progressSpinner>
+    </div>
     <div class="row">
         <div class="form col-md-6 mb-5">
             <h3 class="text-info mb-5">Confirma tu información personal</h3>

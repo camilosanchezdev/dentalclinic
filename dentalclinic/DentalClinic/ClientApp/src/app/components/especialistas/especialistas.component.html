@@ -1,5 +1,8 @@
 <div class="container d-flex justify-content-center pb-5 flex-column align-items-center">
-    
+    <div id="spinner" *ngIf="progressSpinner">
+        <p-progressSpinner [style]="{width: '50px', height: '50px'}" styleClass="custom-spinner" strokeWidth="8"
+            animationDuration=".5s"></p-progressSpinner>
+    </div>
     <div class="especialistas bg-light border-shadow pt-3 pb-5 border w-75">
         <h3 class="text-center mb-4 text-secondary">Elige un especialista</h3>
         <div *ngFor="let esp of especialistas" class="card-especialista row mt-3 border-top border-shadow mr-0 ml-0 pt-5 pb-5">
