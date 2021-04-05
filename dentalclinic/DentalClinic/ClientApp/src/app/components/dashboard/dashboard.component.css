@@ -1,0 +1,21 @@
+.turno {
+  min-height: 100vh;
+}
+.cs-pink-col {
+  color: #bc74a5;
+}
+.cs-blue-col {
+  color: #1192b3;
+}
+
+h3 {
+  margin: 0 0 10px;
+}
+
+pre {
+  background-color: #f5f5f5;
+  padding: 15px;
+}
+.progress {
+  margin: 0 auto;
+}

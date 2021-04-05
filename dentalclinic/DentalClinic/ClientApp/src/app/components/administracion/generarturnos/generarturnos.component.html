@@ -1,0 +1,24 @@
+<div class="generar-turnos d-flex justify-content-center flex-column align-items-center mt-5">
+    <h3>Generador de turnos</h3>
+    <div class="form-generator w-50">
+        <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <select class="form-control" name="especialista" formControlName="especialista" form
+                    id="exampleFormControlSelect1" (change)="onchangeEspecialista($event)">
+                    <option value="0">Seleccionar especialista...</option>
+                    <option *ngFor="let item of especialistas" value="{{item.id_especialista}}">{{item.name}}</option>
+                </select>
+            </div>
+            <div class="form-check my-2" *ngFor="let item of dias_disponibles; let i = index">
+                <input checked="true" name="{{i}}" formControlName="{{i}}" class="form-check-input" type="checkbox"
+                    value="{{i}}" id="{{i}}">
+                <label class="form-check-label h6" for="{{i}}">
+                    {{item}}
+                </label>
+            </div>
+
+            <button class="btn btn-primary mt-2 w-100">Generar</button>
+        </form>
+    </div>
+
+</div>

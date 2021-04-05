@@ -1,53 +1,68 @@
 <div class="container-fluid pl-0 pr-0">
   <nav class="navbar navbar-main navbar-expand-lg navbar-dark bg-info">
-    <h1 class="h1" title="ClínicaDental"><img class="image-logo mr-2 col-md-5" src="../assets/logo.png"><a
-        class="text-light" routerLink="/">DentalClinic</a></h1>
-        <div class="navbar-cards ml-auto row text-light col-md-7 justify-content-end">
-          <div class="phone row mr-5 align-items-center">
-            <div class="icon">
-              <i class="bi bi-telephone-inbound h1 mr-3"></i>
-            </div>
-            <div class="text d-flex flex-column mr-3">
-              <span class="h4">381 4355670</span>
-              <span class="text-center">24/7 Emergencias</span>
-            </div>
-        
-        
-          </div>
-          <div class="days row mr-3 align-items-center">
-            <div class="icon">
-              <i class="bi bi-calendar-date h1 mr-3"></i>
-            </div>
-            <div class="text d-flex flex-column mr-3">
-              <span class="h4">Lunes - Viernes</span>
-              <span class="text-center">9AM - 7PM</span>
-            </div>
-        
-          </div>
+    <h1 class="h1 col-md-5 py-2" title=" ClínicaDental"><img class="image-logo mr-2 col-md-5"
+        src="../assets/logo.png"><a class="text-light" routerLink="/">DentalClinic</a></h1>
+    <div class="navbar-cards ml-auto row text-light col-md-12 col-lg-7 justify-content-end d-none d-md-flex">
+      <div class="phone row mr-5 align-items-center">
+        <div class="icon">
+          <i class="bi bi-telephone-inbound h1 mr-3"></i>
         </div>
-    
+        <div class="text d-flex flex-column mr-3">
+          <span class="h4">381 4355670</span>
+          <span class="text-center">24/7 Emergencias</span>
+        </div>
+      </div>
+      <div class="days row mr-3 align-items-center">
+        <div class="icon">
+          <i class="bi bi-calendar-date h1 mr-3"></i>
+        </div>
+        <div class="text d-flex flex-column mr-3">
+          <span class="h4">Lunes - Viernes</span>
+          <span class="text-center">9AM - 7PM</span>
+        </div>
+
+      </div>
+    </div>
+
   </nav>
   <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler mt-2 ml-2 mb-2" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav">
-        <li class="nav-item active h5">
+        <li class="nav-item active h5 d-none d-md-block">
           <a class="nav-link" routerLink="/">Inicio <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item h5">
+        <li class="nav-item active h5 d-block d-md-none" data-toggle="collapse" data-target=".navbar-collapse">
+          <a class="nav-link" routerLink="/">Inicio <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item h5 d-none d-md-block">
           <a class="nav-link" routerLink="/nosotros">Nuestra clínica</a>
         </li>
-        <li class="nav-item h5">
+        <li class="nav-item h5 d-block d-md-none" data-toggle="collapse" data-target=".navbar-collapse">
+          <a class="nav-link" routerLink="/nosotros">Nuestra clínica</a>
+        </li>
+        <li class="nav-item h5 d-none d-md-block">
           <a class="nav-link" routerLink="/tratamientos">Tratamientos</a>
         </li>
-        <li class="nav-item h5">
+        <li class="nav-item h5 d-block d-md-none" data-toggle="collapse" data-target=".navbar-collapse">
+          <a class="nav-link" routerLink="/tratamientos">Tratamientos</a>
+        </li>
+        <li class="nav-item h5 d-none d-md-block">
           <a class="nav-link" routerLink="/turnos">Turnos online</a>
         </li>
-        <li class="nav-item h5" [routerLink]="['']" fragment="contacto">
+        <li class="nav-item h5 d-block d-md-none" data-toggle="collapse" data-target=".navbar-collapse">
+          <a class="nav-link" routerLink="/turnos">Turnos online</a>
+        </li>
+        <li class="nav-item h5 d-none d-md-block" [routerLink]="['']" fragment="contacto">
+          <a class="nav-link" href="#contacto">Contacto</a>
+        </li>
+        <li class="nav-item h5 d-block d-md-none" data-toggle="collapse" data-target=".navbar-collapse"
+          [routerLink]="['']" fragment="contacto">
           <a class="nav-link" href="#contacto">Contacto</a>
         </li>
       </ul>

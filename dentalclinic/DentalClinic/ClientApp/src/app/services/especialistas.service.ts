@@ -28,4 +28,7 @@ export class EspecialistasService {
   getValue(): Observable<boolean> {
     return this._especialista.asObservable();
   }
+  getDias(id_especialista) {
+    return this.http.get(this._baseUrl + 'turnos/getdias/' + id_especialista);
+  }
 }

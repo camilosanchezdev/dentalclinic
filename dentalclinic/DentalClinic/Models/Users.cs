@@ -9,7 +9,8 @@ namespace DentalClinic.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int id_user { get; set; }
-        public long dni { get; set; }
+        public string name { get; set; }
         public string password { get; set; }
+        public int role_id { get; set; }
     }
 }

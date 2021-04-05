@@ -24,36 +24,23 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 // Spinner
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-//Routes
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: '#contacto', component: HomeComponent },
-  { path: 'nosotros', component: AboutComponent },
-  { path: 'tratamientos', component: TratamientosComponent },
-  {
-    path: 'turnos',
-    component: TurnoComponent,
-    children: [
-      {
-        path: '',
-        component: EspecialistasComponent,
-      },
+import { LoginComponent } from './components/login/login.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+// Redux NgRx
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { reducers } from './store/app.states';
+import { AuthenticationEffects } from './store/effects/authentication.effects';
 
-      {
-        path: 'calendario',
-        component: CalendarComponent,
-      },
-      {
-        path: 'formulario',
-        component: TurnoFormComponent,
-      },
-      {
-        path: 'confirmacion',
-        component: ConfirmacionComponent,
-      },
-    ],
-  },
-];
+//Routes
+import { Routing } from './app.routes';
+import { GenerarturnosComponent } from './components/administracion/generarturnos/generarturnos.component';
+import { ListadoturnosComponent } from './components/administracion/listadoturnos/listadoturnos.component';
+import { MensajesComponent } from './components/administracion/mensajes/mensajes.component';
+import { HomeadminComponent } from './components/administracion/home/home.component';
+import { EspecialistasadmComponent } from './components/administracion/especialistas/especialistas.component';
 
 @NgModule({
   declarations: [
@@ -66,10 +53,17 @@ const routes: Routes = [
     CalendarComponent,
     TurnoFormComponent,
     ConfirmacionComponent,
+    LoginComponent,
+    DashboardComponent,
+    GenerarturnosComponent,
+    ListadoturnosComponent,
+    MensajesComponent,
+    HomeadminComponent,
+    EspecialistasadmComponent,
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    Routing,
     CarouselModule,
     BrowserAnimationsModule,
     CalendarModule.forRoot({
@@ -84,6 +78,12 @@ const routes: Routes = [
       preventDuplicates: true,
     }),
     ProgressSpinnerModule,
+    StoreModule.forRoot(reducers, {}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+    EffectsModule.forRoot([AuthenticationEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

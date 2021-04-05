@@ -1,0 +1,38 @@
+<section class="turno mt-5">
+    <h2 class="cs-pink-col mb-3 text-center">Panel de <span
+            class="cs-blue-col h1 font-weight-bold">administración</span>
+    </h2>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <p *ngIf="isAuthenticated" class="navbar-brand my-0 py-0">{{user.username}}</p>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDashboard"
+            aria-controls="navbarDashboard" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarDashboard">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="./">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="generar-turnos">Generar turnos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="listado-turnos">Listado de turnos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="mensajes">Mensajes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="especialistas">Especialistas</a>
+                </li>
+            </ul>
+            <div class="buttons">
+                <button class="btn btn-outline-danger" (click)="logout()">Cerrar sesión</button>
+            </div>
+        </div>
+    </nav>
+
+    <router-outlet></router-outlet>
+
+</section>
