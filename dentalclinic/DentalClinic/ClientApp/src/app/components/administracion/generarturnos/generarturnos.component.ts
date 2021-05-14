@@ -15,7 +15,7 @@ import { EspecialistasService } from './../../../services/especialistas.service'
 export class GenerarturnosComponent implements OnInit {
   checkoutForm: FormGroup;
   especialistas: Array<Object> = [];
-  dias_disponibles: Array<string> = [];
+  dias_disponibles: Array<Object> = [];
   constructor(
     private formBuilder: FormBuilder,
     private especialistasService: EspecialistasService
@@ -30,6 +30,7 @@ export class GenerarturnosComponent implements OnInit {
       5: [null, Validators.required],
       6: [null, Validators.required],
     });
+    this.checkoutForm.controls['especialista'].setValue(0);
   }
 
   ngOnInit(): void {
@@ -50,21 +51,29 @@ export class GenerarturnosComponent implements OnInit {
     console.log(this.checkoutForm.value);
   }
   onchangeEspecialista($event): void {
+    for (let index = 0; index < 7; index++) {
+      this.checkoutForm.controls[index].setValue(null);
+    }
     if ($event.target.value != 0) {
       this.especialistasService.getDias($event.target.value).subscribe(
         (data: any) => {
           this.dias_disponibles = [];
           for (let index = 0; index < data.diasDisponibles.length; index++) {
             //let dia = data.diasDisponibles;
-            const dia =
-              this.capitalizeFirstLetter(data.diasSemana[index]) +
-              ' ' +
-              this.convertDigitIn(data.diasDisponibles[index].slice(0, 10));
+            const dia = {
+              dia:
+                this.capitalizeFirstLetter(data.diasSemana[index]) +
+                ' ' +
+                this.convertDigitIn(data.diasDisponibles[index].slice(0, 10)),
+            };
+
             this.dias_disponibles.push(dia);
           }
         },
         (error) => console.log(error)
       );
+    } else {
+      this.dias_disponibles = [];
     }
   }
   capitalizeFirstLetter(string) {

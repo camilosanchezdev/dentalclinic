@@ -61,10 +61,10 @@ namespace DentalClinic.Controllers
 
         }
         // Generar turnos
-        [HttpPost("generar")]
+        [HttpGet("generar")]
         public ActionResult GenerarTurnos()
         {
-
+            //var turnos
             return Ok();
         }
         [HttpGet("getdias/{id_especialista}")]
@@ -97,14 +97,14 @@ namespace DentalClinic.Controllers
                     while (flag)
                     {
                         // Filtro por días en que atiende el especialista
-                        for (int j = 0; j < especialista.days.Length; j++)
-                        {
-                            if (DiaSemana(especialista.days[j]) == ultimoDia.DayOfWeek)
-                            {
-                                flag = false;
-                                break;
-                            }
-                        }
+                        //for (int j = 0; j < especialista.days.Length; j++)
+                        //{
+                        //    if (DiaSemana(especialista.days[j]) == ultimoDia.DayOfWeek)
+                        //    {
+                        //        flag = false;
+                        //        break;
+                        //    }
+                        //}
                         if(flag)
                         {
                             ultimoDia = ultimoDia.AddDays(1);
@@ -123,6 +123,12 @@ namespace DentalClinic.Controllers
             }
 
             return Ok("no");
+        }
+        [HttpPost("generarturnos")]
+        public ActionResult generarTurnos([FromForm] int id_especialista, [FromForm] bool dia1, [FromForm] bool dia2, [FromForm] bool dia3, [FromForm] bool dia4, [FromForm] bool dia5, [FromForm] bool dia6, [FromForm] bool dia7)
+        {
+            
+            return Ok();
         }
         public DayOfWeek DiaSemana(int dia)
         {

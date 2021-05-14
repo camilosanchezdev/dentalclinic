@@ -38,8 +38,8 @@ namespace DentalClinic.Controllers
             if (user != null)
             {
                 // Valid user
-                var issuer = "https://dentalclinicweb.azurewebsites.net/api/";
-                //var issuer = "https://localhost:44347/api/";
+                //var issuer = "https://dentalclinicweb.azurewebsites.net/api/";
+                var issuer = "https://localhost:44347/api/";
                 var secretKey = _configuration.GetSection("SecretKey").Value;
                 var key = Encoding.ASCII.GetBytes(secretKey);
                 var claims = new ClaimsIdentity(new Claim[]
@@ -69,8 +69,8 @@ namespace DentalClinic.Controllers
         {
             var secretKey = _configuration.GetSection("SecretKey").Value;
             var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey));
-            var issuer = "https://dentalclinicweb.azurewebsites.net/api/";
-            //var issuer = "https://localhost:44347/api/";
+            //var issuer = "https://dentalclinicweb.azurewebsites.net/api/";
+            var issuer = "https://localhost:44347/api/";
 
             var tokenHandler = new JwtSecurityTokenHandler();
             try

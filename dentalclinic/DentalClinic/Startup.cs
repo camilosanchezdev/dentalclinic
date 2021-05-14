@@ -38,7 +38,7 @@ namespace DentalClinic
             services.AddCors(options => options.AddPolicy("ApiCorsPolicy", builder =>
             {
                 // Solo para Desarrollo
-                //builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+                builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
             }));
             
             // Authentication
